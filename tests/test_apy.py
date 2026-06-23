@@ -4,7 +4,7 @@ from ultils.config_reader import ConfigReader
 
 class TestDummyJSONProductsAPI:
   
-    @pytest.fixture(autosue=True)
+    @pytest.fixture(autouse=True)
     def setup(self):
         config = ConfigReader()
         base_url = config.get_base_url()
@@ -13,7 +13,7 @@ class TestDummyJSONProductsAPI:
     @pytest.mark.get
     def test_get_products(self):
 
-        response = self.api_helper.get("/products/1")
+        response = self.api_helper.get("/product/1")
 
         assert response.status_code == 200
         product = response.json()
